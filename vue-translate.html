@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="../vue.js" charset="utf-8"></script>
+        <style media="screen">
+            .main{width: 600px; height: 400; margin: 10px auto 0; text-align: center;}
+            .main .show{width: 583px; height: 126px; overflow: auto; margin-top: 25px;text-indent: inherit;}
+            h1{text-align: center;}
+            .power{color: gray; margin: -10px 0 25px 0;}
+            .push-data{height: 80px;background-color: #ccc; text-align: center; line-height: 80px;border-radius: 5px;}
+            .push-data select, push-data input{background-color: #ccc;}
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <div class="main">
+                <h1>Word Translator</h1>
+                <div class="power">
+                    Powered By Vue.js
+                </div>
+                <form class="push-data"  action="index.html" method="post">
+                    <input v-model="inp" ref="inputmsg" @keydown.native="handleInput"></userinput>
+                    <select selected v-model="sele">
+                        <option disabled value="">请选择</option>
+                        <option selected = "selected" value="Russian" >Russian</option>
+                        <option value="Spanish">Spanish </option>
+                        <option value="French">French</option>
+                        <option value="Chinese">Chinese</option>
+                    </select>
+                    <button @click="handleTranslate" type="submit" name="button">TRANSLATE</button>
+                </form>
+                    <div class="show">
+                        {{inp}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: '#root',
+                data:{
+                    inputMessage: '',
+                    inp: '',
+                    sele:'',
+                },
+                methods:{
+                    handleInput:function(){
+                        this.inputMessage = this.inp
+                    },
+                    handleTranslate:function(){
+                        console.log(this.inp)
+                        console.log(this.sele)
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
